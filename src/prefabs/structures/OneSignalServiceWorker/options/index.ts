@@ -1,3 +1,4 @@
+import { variable } from '@betty-blocks/component-sdk';
 import { advanced } from '../../advanced';
 
 export const categories = [
@@ -9,5 +10,7 @@ export const categories = [
 ];
 
 export const oneSignalServiceWorkerOptions = {
+  appId: variable('OneSignal App ID'),
+
   ...advanced('OneSignalServiceWorker'),
-};
+};  

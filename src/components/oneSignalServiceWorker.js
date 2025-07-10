@@ -4,9 +4,11 @@
   allowedTypes: [],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const { env } = B;
+    const { env, useText } = B;
+    const { appId } = options;
 
     const isDev = env === 'dev';
+    const appIdText = useText(appId);
 
     function addScript(url, callback) {
       if (url) {
@@ -25,11 +27,12 @@
 
     useEffect(() => {
       if (isDev) return;
+
       addScript(url, function () {
         window.OneSignalDeferred = window.OneSignalDeferred || [];
-        OneSignalDeferred.push(async function(OneSignal) {
+        OneSignalDeferred.push(async function (OneSignal) {
           await OneSignal.init({
-            appId: "d544fb49-f9bb-41a7-b712-c876d4933a63",
+            appId: appIdText,
           });
         });
       });
@@ -50,11 +53,11 @@
       borderWidth: '0.0625rem',
       backgroundColor: 'rgb(240, 241, 245)',
       textAlign: 'center',
-      fontSize: "0.75rem",
-      color: "rgb(38, 42, 58)",
-      display:"flex",
-      justifyContent: "center",
-      alignItems: "center"
+      fontSize: '0.75rem',
+      color: 'rgb(38, 42, 58)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   }),
 }))();
