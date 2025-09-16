@@ -34,6 +34,12 @@
           });
         });
       });
+
+      B.defineFunction('Show push notification prompt', () => {
+        window.OneSignalDeferred.push(async function (OneSignal) {
+          await OneSignal.Notifications.requestPermission();
+        });
+      });
     }, []);
 
     if (isDev) {
