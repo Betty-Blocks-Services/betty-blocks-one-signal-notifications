@@ -12,14 +12,12 @@
 
     function addScript(url, callback) {
       if (url) {
-        var s = document.createElement('script');
-        s.src = url;
-        document.head.appendChild(s);
-      }
-
-      if (callback) {
-        if (typeof callback !== 'function') return;
-        callback(); // Simply execute the passed function
+        var script = document.createElement('script');
+        script.src = url;
+        if (callback && typeof callback === 'function') {
+          script.onload = callback;
+        }
+        document.head.appendChild(script);
       }
     }
 
@@ -30,7 +28,7 @@
 
       addScript(url, function () {
         window.OneSignalDeferred = window.OneSignalDeferred || [];
-        OneSignalDeferred.push(async function (OneSignal) {
+        window.OneSignalDeferred.push(async function (OneSignal) {
           await OneSignal.init({
             appId: appIdText,
           });
