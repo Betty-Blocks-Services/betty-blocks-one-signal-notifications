@@ -12,5 +12,12 @@ export const categories = [
 export const oneSignalServiceWorkerOptions = {
   appId: variable('OneSignal App ID'),
 
+  alreadyGrantedMessage: variable('Already granted message', {
+    value: ['Notifications already granted'],
+  }),
+  blockedMessage: variable('Blocked message', {
+    value: ['Notifications blocked'],
+  }),
+
   ...advanced('OneSignalServiceWorker'),
-};  
+};

@@ -36,9 +36,17 @@
       });
 
       B.defineFunction('Show push notification prompt', () => {
-        window.OneSignalDeferred.push(async function (OneSignal) {
-          await OneSignal.Notifications.requestPermission();
-        });
+        const status = Notification.permission;
+
+        if (status === 'default') {
+          window.OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.Notifications.requestPermission();
+          });
+        } else if (status === 'granted') {
+          alert('Notifications already granted');
+        } else if (status === 'denied') {
+          alert('Notifications blocked');
+        }
       });
     }, []);
 
