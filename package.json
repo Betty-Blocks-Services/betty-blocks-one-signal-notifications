@@ -20,7 +20,14 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.0"
+    "prettier": "^2.5.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "scripts": {
     "start": "bb components serve -p 5002",
@@ -29,5 +36,10 @@
     "lint": "eslint --ext .js,.ts,.tsx ./src",
     "lint:ci": "yarn lint --max-warnings 0"
   },
-  "files": ["dist"]
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "react-onesignal": "^3.4.0"
+  }
 }
