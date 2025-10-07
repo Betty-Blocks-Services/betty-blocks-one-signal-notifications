@@ -3,6 +3,7 @@
   type: 'CONTENT_COMPONENT',
   allowedTypes: [],
   orientation: 'HORIZONTAL',
+  dependencies: [],
   jsx: (() => {
     const { env, useText } = B;
     const { appId } = options;
